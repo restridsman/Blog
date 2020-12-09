@@ -4,6 +4,7 @@ async function fetchAllPosts(){
         let response = await fetch('http://localhost:3000/posts')
         let posts =  await response.json();
         console.log(posts);
+    
         let output = "";
              for (let post of posts) {
                  output += `
