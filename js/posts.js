@@ -9,7 +9,9 @@ async function fetchAllPosts(){
                  output += `
                          <div class="well text-center">
                           <h2>${post.title}</h2>
-                          <h3>${post.author}</h3>
+                          <p>${post.content}</p>
+                          <p><i>${post.author}</i></p>
+                          <p><i>${post.date}</i></p>
                          </div>
                      </div>
                      `;
