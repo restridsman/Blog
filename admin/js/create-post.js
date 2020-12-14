@@ -1,3 +1,4 @@
+
 let form = document.getElementById('create-pun-form');
 form.addEventListener('submit', createPun);
 
@@ -60,3 +61,4 @@ function formatFormData(formData) {
 }
 
 $("h1").css("color", "pink");
+
