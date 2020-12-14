@@ -14,7 +14,7 @@ async function prefillPost() {
 
         document.getElementById('title').value = data.title;
         document.getElementById('author').value = data.content;
-        document.getElementById('update-content').value = data.content;
+        document.getElementById('content-textarea').value = data.content;
 
     } catch (message) {
         throw new Error(message);
@@ -23,31 +23,63 @@ async function prefillPost() {
 
 
 
+let form = document.getElementById('update-post-form');
+form.addEventListener('submit', updatePost);
 
-// function updatePostEvent() {
-//     let urlParams = new URLSearchParams(window.location.search);
-    
-//     let form = document.getElementById('update-post-form');
-//     form.addEventListener('submit', async function(e) {
-//         e.preventDefault();
 
-//         let formData = new FormData(this);
-//         let object = {content: formData.get('update-content')}
-//         console.log(object);
-//         console.log(JSON.stringify(object));
-    
-//         try {
-//             await fetch('http://localhost:3000/posts/' + urlParams.get('id'), {
-//                 method: 'PATCH', 
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify(object) // body data type must match "Content-Type" header
-//             });
-    
-//             window.location.replace('/admin/index.html') // redirects to the index.html page
-//         } catch (message) {
-//             throw new Error(message);
-//         }
-//     });
-// }
+var inputTitle = document.getElementById('title');
+var inputAuthor = document.getElementById('author');
+var inputContent = document.getElementById('content-textarea');
+var contentSearchValue;
+var titleSearchValue;
+var authorSearchValue;
+
+inputTitle.addEventListener('input', (e)=> {
+    titleSearchValue = e.target.value;
+});
+inputAuthor.addEventListener('input', (e)=> {
+    authorSearchValue = e.target.value;
+});
+inputContent.addEventListener('input', (e)=> {
+    contentSearchValue = e.target.value;
+});
+
+
+async function updatePost(e) {
+    let urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('id'));
+    e.preventDefault();
+
+    // this => is the form it self
+    let formData = new FormData(this);
+
+
+    try {
+        await fetch('http://localhost:3000/posts/' + urlParams.get('id'), {
+            method: 'PATCH', // GET, POST, PATCH, DELETE
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title:     titleSearchValue,
+                author:    authorSearchValue,
+                content:   contentSearchValue
+
+            }),
+        });
+
+        window.location.replace('index.html') // redirects to the index.html page
+    } catch (message) {
+        throw new Error(message);
+    }
+}
+
+
+function formatFormData(formData) {
+    let obj = {};
+    for (let key of formData.keys()) {
+        obj[key] = formData.get(key);
+    }
+
+    return obj;
+}
