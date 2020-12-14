@@ -1,4 +1,5 @@
 
+
 async function fetchAllPosts(){
     try{
         let response = await fetch('http://localhost:3000/posts')
