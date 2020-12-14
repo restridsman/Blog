@@ -27,29 +27,33 @@ async function fetchAndPrintAllPosts(){
     }catch(error) {
         console.log(error);
     }
+    deletePunEvent();
+    
 }
+
 
 
 fetchAndPrintAllPosts();
 
-//Funktionen nedan är under konstruktion. Fungerar ej.
+function deletePunEvent() {
+    let deleteBtns = document.getElementsByClassName('delete-post-link');
+    for (let deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click', async function(e) {
+            e.preventDefault()
 
-function handleClick(myPost) {
+            let punId = this.dataset.id
+            console.log(punId);
 
-    async function fetchAllPosts() {
-        try {
-            let response = await fetch('http://localhost:3000/posts')
-            let data =  await response.json();
-            
-        } catch(error) {
-            console.log(error);
-        }
+            try {
+                await fetch('http://localhost:3000/posts/' + punId, {
+                    method: 'DELETE', // GET, POST, PATCH, DELETE
+                });
 
+                this.parentNode.parentNode.remove();
+            } catch (message) {
+                throw new Error(message);
+            }
+
+        })
     }
-    
-
-    fetch("http://localhost:3000/posts/" + post.id, {
-        method: 'DELETE'
-    }) 
-
 }

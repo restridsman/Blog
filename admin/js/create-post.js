@@ -1,48 +1,60 @@
-const express = require('express');
-//const { Console } = require('console');
-const app = express();
+let form = document.getElementById('create-pun-form');
+form.addEventListener('submit', createPun);
 
 
+var inputTitle = document.getElementById('Title');
+var inputAuthor = document.getElementById('Author');
+var inputContent = document.getElementById('content-textarea');
+var contentSearchValue;
+var titleSearchValue;
+var authorSearchValue;
 
-async function fetchAllPosts(){
-    try{
-        let response = await fetch('http://localhost:3000/posts')
-        let posts =  await response.json();
-        console.log(posts);
-        let output = "";
-             for (let post of posts) {
-                 output += `
-                         <div class="well text-center">
-                          <h2>${post.title}</h2>
-                          <p>${post.content}</p>
-                          <p><i>${post.author}</i></p>
-                          <p><i>${post.date}</i></p>
-                         </div>
-                     </div>
-                     `;
-             }
-            $('#content-container').html(output);
+inputTitle.addEventListener('input', (e)=> {
+    titleSearchValue = e.target.value;
+});
+inputAuthor.addEventListener('input', (e)=> {
+    authorSearchValue = e.target.value;
+});
+inputContent.addEventListener('input', (e)=> {
+    contentSearchValue = e.target.value;
+});
 
-    
-    }catch(error) {
-        console.log(error);
+
+async function createPun(e) {
+    e.preventDefault();
+
+    // this => is the form it self
+    let formData = new FormData(this);
+
+
+    try {
+        await fetch('http://localhost:3000/posts', {
+            method: 'POST', // GET, POST, PATCH, DELETE
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title:     titleSearchValue,
+                author:    authorSearchValue,
+                content:   contentSearchValue
+
+            }),
+        });
+
+        window.location.replace('index.html') // redirects to the index.html page
+    } catch (message) {
+        throw new Error(message);
     }
 }
 
-fetchAllPosts();
 
+function formatFormData(formData) {
+    let obj = {};
+    for (let key of formData.keys()) {
+        obj[key] = formData.get(key);
+    }
 
+    return obj;
+}
 
-
-app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html")
-});
-
-app.listen(3000, function() {
-    console.log('Server is running on Port 3000');
-});
-
-
-//Om formuläret lyckades skapa ett nytt inlägg,
-//skicka vidare användaren till admin/index.html
-
+$("h1").css("color", "pink");
