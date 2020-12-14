@@ -13,8 +13,8 @@ async function fetchAndPrintAllPosts(){
                     <th>${post.author}</th>
                     <th>${post.date.slice(0, 10)}</th>
                     <th>
-                        <a href="update-post.html" id="update-post-link">Update</a>
-                        <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
+                        <a href="update-post.html" data-id=${post['_id']}" class="update-post-link">Update</a>
+                        <a href="#" data-id=${post["_id"]} class="delete-post-link">Delete</a>                        
                     </th>
                 </tr>
                      `;
@@ -27,29 +27,33 @@ async function fetchAndPrintAllPosts(){
     }catch(error) {
         console.log(error);
     }
+    deletePunEvent();
+    
 }
+
 
 
 fetchAndPrintAllPosts();
 
-//Funktionen nedan är under konstruktion. Fungerar ej.
+function deletePunEvent() {
+    let deleteBtns = document.getElementsByClassName('delete-post-link');
+    for (let deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click', async function(e) {
+            e.preventDefault()
 
-function handleClick(myPost) {
+            let punId = this.dataset.id
+            console.log(punId);
 
-    async function fetchAllPosts() {
-        try {
-            let response = await fetch('http://localhost:3000/posts')
-            let data =  await response.json();
-            
-        } catch(error) {
-            console.log(error);
-        }
+            try {
+                await fetch('http://localhost:3000/posts/' + punId, {
+                    method: 'DELETE', // GET, POST, PATCH, DELETE
+                });
 
+                this.parentNode.parentNode.remove();
+            } catch (message) {
+                throw new Error(message);
+            }
+
+        })
     }
-    
-
-    fetch("http://localhost:3000/posts/" + post.id, {
-        method: 'DELETE'
-    }) 
-
 }
