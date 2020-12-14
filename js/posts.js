@@ -6,9 +6,8 @@ async function fetchAllPosts(){
         console.log(posts);
     
         let output = "";
-             for (let post of posts) {
+             for (let post of posts.reverse()) {
                  output += `
-                         
                             <div class="content-section">
                                 <div class="text-box">
                                     <h2 class="heading">${post.title}</h2>
@@ -18,7 +17,6 @@ async function fetchAllPosts(){
                                 </div> 
                                 <div class="spacing"></div>
                             </div>
-                        
                      `;
              }
             $('#content-container').html(output);
