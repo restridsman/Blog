@@ -13,7 +13,7 @@ async function fetchAndPrintAllPosts(){
                     <th>${post.author}</th>
                     <th>${post.date.slice(0, 10)}</th>
                     <th>
-                        <a href="update-post.html" id==${post['_id']}">Update</a>
+                        <a href="update-post.html?id=${post["_id"]}">Update</a>
                         <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
                     </th>
                 </tr>
