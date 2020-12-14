@@ -1,4 +1,50 @@
-#blog-link-container {
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#fatBoyContainer {
+    width: 40%;
+}
+
+.blog-link-container {
     display: flex;
     flex-direction: row-reverse;
 }
+
+
+#postTableAdmin {
+width: 100%;
+
+}
+
+th:nth-child(1) { 
+    width: 25%; 
+}
+  
+th:nth-child(2) { 
+    width: 25%; 
+} 
+
+th:nth-child(3) { 
+    width: 25%; 
+} 
+
+th:nth-child(4) { 
+    width: 200px; 
+} 
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#update-post-link {
+    margin-right: 5px;
+}
+
+.border {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
