@@ -8,6 +8,7 @@ async function fetchAndPrintAllPosts(){
         let output = "";
              for (let post of data.reverse()) {
                  output += `
+<<<<<<< HEAD
                             <tr>
                             <th>${post.title}</th>
                             <th>${post.author}</th>
@@ -15,6 +16,16 @@ async function fetchAndPrintAllPosts(){
                             <th>
                              <a href="update-post.html?id=${post["_id"]}">Update</a>
                             <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
+=======
+                 <tr>
+                    <th>${post.title}</th>
+                    <th>${post.author}</th>
+                    <th>${post.tags}</th>
+                    <th>${post.date.slice(0, 10)}</th>
+                    <th>
+                        <a href="update-post.html?id=${post["_id"]}">Update</a>
+                        <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
+>>>>>>> e4133f961fba8f5c82243f05c200f18ad1f86293
                     </th>
                 </tr>
                      `;
