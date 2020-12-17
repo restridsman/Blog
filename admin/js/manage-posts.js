@@ -6,15 +6,15 @@ async function fetchAndPrintAllPosts(){
         let data =  await response.json();
         console.log(data);
         let output = "";
-             for (let post of data) {
+             for (let post of data.reverse()) {
                  output += `
-                 <tr>
-                    <th>${post.title}</th>
-                    <th>${post.author}</th>
-                    <th>${post.date.slice(0, 10)}</th>
-                    <th>
-                        <a href="update-post.html?id=${post["_id"]}">Update</a>
-                        <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
+                            <tr>
+                            <th>${post.title}</th>
+                            <th>${post.author}</th>
+                            <th>${post.date.slice(0, 10)}</th>
+                            <th>
+                             <a href="update-post.html?id=${post["_id"]}">Update</a>
+                            <a href="#" onclick="handleClick(this); id="delete-post-link">Delete</a>                        
                     </th>
                 </tr>
                      `;
