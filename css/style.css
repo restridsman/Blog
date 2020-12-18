@@ -64,7 +64,7 @@ div#search-container button:hover {
     justify-content: center;
     text-align: center;
     font-size: 70px;
-    background-image: url('/img/gruppbild.jpg');
+    background-image: url('../img/gruppbild.jpg');
     background-size: cover;
     background-position-y: -93px;
 }
