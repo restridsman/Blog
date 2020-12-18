@@ -1,34 +1,36 @@
-
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Post</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create post</title>
+        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/> <!--för ikoner fontawsome.com-->
+    </head>
 <body>
     <div>
 
         <div id="container">
             <h1>New</h1>
     
-            <form id="create-pun-form">
+            <form id="create-post">
                 <input type="text" id="Title" placeholder="Title"><br>
                 <input type="text" id="Author" placeholder="Author"><br>
                 <input type="text" id="Tags" placeholder="Tags"><br>
-                <label for="">Content</label><br>
-                <textarea name="content" id="content-textarea" cols="30" rows="10"></textarea>
+                <br>
+                <textarea name="content" id="content-textarea" cols="30" rows="10" placeholder="Content"></textarea>
     
                 <input type="submit" value="Create">
-                <a href="index.html">&#x2190; back</a> 
+                <a href="index.html">Home</a>
             </form>
         </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/create-post.js"></script>
-
 
 </body>
 </html>
