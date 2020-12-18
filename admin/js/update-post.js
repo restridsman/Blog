@@ -13,7 +13,8 @@ async function prefillPost() {
         console.log(data.content);
 
         document.getElementById('title').value = data.title;
-        document.getElementById('author').value = data.content;
+        document.getElementById('author').value = data.author;
+        document.getElementById('tags').value = data.tags;
         document.getElementById('content-textarea').value = data.content;
 
     } catch (message) {
@@ -29,9 +30,11 @@ form.addEventListener('submit', updatePost);
 
 var inputTitle = document.getElementById('title');
 var inputAuthor = document.getElementById('author');
+var inputTags = document.getElementById('tags');
 var inputContent = document.getElementById('content-textarea');
 var contentSearchValue;
 var titleSearchValue;
+var tagsSearchValue;
 var authorSearchValue;
 
 inputTitle.addEventListener('input', (e)=> {
@@ -40,6 +43,10 @@ inputTitle.addEventListener('input', (e)=> {
 inputAuthor.addEventListener('input', (e)=> {
     authorSearchValue = e.target.value;
 });
+inputTags.addEventListener('input', (e)=> {
+    tagsSearchValue = e.target.value;
+});
+
 inputContent.addEventListener('input', (e)=> {
     contentSearchValue = e.target.value;
 });
@@ -63,6 +70,7 @@ async function updatePost(e) {
             body: JSON.stringify({
                 title:     titleSearchValue,
                 author:    authorSearchValue,
+                tags:      tagsSearchValue,
                 content:   contentSearchValue
 
             }),

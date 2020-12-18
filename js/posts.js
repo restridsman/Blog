@@ -12,7 +12,7 @@ async function fetchAllPosts(){
                                 <div class="text-box">
                                     <h2 class="heading">${post.title}</h2>
                                     <p class="date">${post.date.slice(0,10)} <span class="tags">|| ${post.tags}</span></p>  
-                                    <p class=content-text>${post.content.slice(0,100)}<br><a href="post.html?id=${post['_id']}" class="read-more-link">...read more</a></p>
+                                    <p class=content-text>${post.content.slice(0,100)}<a href="post.html?id=${post['_id']}" class="read-more-link">...read more</a></p>
                                     <p class="author">// ${post.author}</p>
                                 </div> 
                                 <div class="spacing"></div>

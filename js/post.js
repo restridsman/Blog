@@ -16,8 +16,7 @@ async function thisPostOnly() {
         `<h2 class="heading">${data.title}</h2>` +
         `<p class="date">${data.date.slice(0,10)} <span class="tags">|| ${data.tags}</span></p>` +
         `<p class=content-text>${data.content}</p>` +
-        `<p class="author">// ${data.author}</p>` +
-        `<div class="spacing"></div>`;
+        `<p class="author">// ${data.author}</p>`;
 
     } catch (message) {
             throw new Error(message);

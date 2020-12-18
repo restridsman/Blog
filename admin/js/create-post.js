@@ -1,9 +1,9 @@
 let form = document.getElementById('create-post');
 form.addEventListener('submit', createPost);
 
-var inputTitle = document.getElementById('Title');
-var inputAuthor = document.getElementById('Author');
-var inputTags = document.getElementById('Tags')
+var inputTitle = document.getElementById('title');
+var inputAuthor = document.getElementById('author');
+var inputTags = document.getElementById('tags')
 var inputContent = document.getElementById('content-textarea');
 var titleSearchValue;
 var authorSearchValue;

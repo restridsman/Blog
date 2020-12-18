@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Create post</title>
-        <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="css/bootstrap.min.css"> 
         <link rel="stylesheet" href="css/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
@@ -13,19 +13,19 @@
     </head>
 <body>
     <div>
-
-        <div id="container">
-            <h1>New</h1>
-    
+        <div id="bp-container">
+            <a href="index.html"><button id="btb-btn"type="button" class="btn btn-outline-primary">Writer's cramp! Take me to back to Admin</button></a>
+            <div class="border"></div>
+        
+            <h1>New Blog Post</h1>
+            
             <form id="create-post">
-                <input type="text" id="Title" placeholder="Title"><br>
-                <input type="text" id="Author" placeholder="Author"><br>
-                <input type="text" id="Tags" placeholder="Tags"><br>
-                <br>
+                <input type="text" id="title" placeholder="Title"><br>
+                <input type="text" id="author" placeholder="Author"><br>
+                <input type="text" id="tags" placeholder="Tags"><br>
                 <textarea name="content" id="content-textarea" cols="30" rows="10" placeholder="Content"></textarea>
-    
-                <input type="submit" value="Create">
-                <a href="index.html">Home</a>
+                
+                <br><button id="create-bp-btn"type="submit" class="btn btn-outline-primary">Post this magic content</button>
             </form>
         </div>
 

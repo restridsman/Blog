@@ -16,7 +16,6 @@ async function fetchAndPrintAllPosts(){
                     <th>
                         <a href="update-post.html?id=${post["_id"]}">Update</a> <span>/</span>
                         <a href="#" data-id=${post["_id"]} class="delete-post-link">Delete</a>
-                      
                     </th>
                 </tr>
                      `;
