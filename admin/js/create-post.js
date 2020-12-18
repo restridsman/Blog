@@ -1,6 +1,5 @@
-
-let form = document.getElementById('create-pun-form');
-form.addEventListener('submit', createPun);
+let form = document.getElementById('create-post');
+form.addEventListener('submit', createPost);
 
 var inputTitle = document.getElementById('Title');
 var inputAuthor = document.getElementById('Author');
@@ -25,13 +24,12 @@ inputContent.addEventListener('input', (e)=> {
 });
 
 
-async function createPun(e) {
+async function createPost(e) {
     e.preventDefault();
-
 
     try {
         await fetch('http://localhost:3000/posts', {
-            method: 'POST', // GET, POST, PATCH, DELETE
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -44,21 +42,9 @@ async function createPun(e) {
             }),
         });
 
-        window.location.replace('index.html') // redirects to the index.html page
+        window.location.replace('index.html')
+
     } catch (message) {
         throw new Error(message);
     }
 }
-
-
-function formatFormData(formData) {
-    let obj = {};
-    for (let key of formData.keys()) {
-        obj[key] = formData.get(key);
-    }
-
-    return obj;
-}
-
-$("h1").css("color", "pink");
-
